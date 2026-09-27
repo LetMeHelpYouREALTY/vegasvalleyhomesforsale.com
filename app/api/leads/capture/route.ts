@@ -11,7 +11,12 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { FollowUpBossClient } from '@/lib/fub/client';
+import {
+  getFollowUpBossApiKey,
+  getFollowUpBossSystemKey,
+} from '@/lib/fub/env';
 import { leadFormLimiter, getClientId, checkRateLimit, getRateLimitHeaders } from '@/lib/rate-limit';
+import { SITE_APEX_HOST } from '@/lib/site-url';
 
 export interface LeadCaptureRequest {
   // Required
@@ -132,10 +137,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Initialize FUB client
+    const apiKey = getFollowUpBossApiKey();
+    if (!apiKey) {
+      console.error('[Lead Capture] Missing FOLLOW_UP_BOSS_API_KEY / FUB_API_KEY');
+      return NextResponse.json(
+        { error: 'Lead capture is temporarily unavailable' },
+        { status: 500 }
+      );
+    }
+
     const fub = new FollowUpBossClient({
-      apiKey: process.env.FUB_API_KEY || '',
-      systemKey: process.env.FUB_SYSTEM_KEY,
+      apiKey,
+      systemKey: getFollowUpBossSystemKey(),
     });
 
     // Check for existing lead (deduplication)
@@ -151,7 +164,7 @@ export async function POST(request: NextRequest) {
       name: data.name || `${data.firstName || ''} ${data.lastName || ''}`.trim(),
       emails: data.email ? [{ value: data.email }] : undefined,
       phones: data.phone ? [{ value: data.phone }] : undefined,
-      source: enrichSource(data.source, request),
+      source: enrichSource(data.source, request) || SITE_APEX_HOST,
       stage: data.stage || 'New Lead',
       customFields: {
         ...data.customFields,
@@ -238,10 +251,7 @@ export async function POST(request: NextRequest) {
     console.error('[Lead Capture] Error:', error);
     
     return NextResponse.json(
-      { 
-        error: 'Failed to capture lead',
-        details: error instanceof Error ? error.message : 'Unknown error',
-      },
+      { error: 'Failed to capture lead' },
       { status: 500 }
     );
   }
@@ -267,7 +277,10 @@ function enrichSource(source: string | undefined, request: NextRequest): string 
   if (referrer) {
     try {
       const refUrl = new URL(referrer);
-      if (!refUrl.hostname.includes('heyberkshire.com')) {
+      if (
+        !refUrl.hostname.includes(SITE_APEX_HOST) &&
+        !refUrl.hostname.includes('heyberkshire.com')
+      ) {
         return `referral/${refUrl.hostname}`;
       }
     } catch (e) {
@@ -275,7 +288,7 @@ function enrichSource(source: string | undefined, request: NextRequest): string 
     }
   }
 
-  return source || 'website/direct';
+  return source || SITE_APEX_HOST;
 }
 
 /**

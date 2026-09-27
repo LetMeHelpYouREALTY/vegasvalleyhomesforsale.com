@@ -1,13 +1,11 @@
-import type { Metadata } from 'next'
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: 'Security Policy',
-  description: 'Security policy and responsible disclosure information for heyberkshire.com',
-  robots: {
-    index: true,
-    follow: true,
-  },
-}
+export const metadata = buildPageMetadata({
+  path: "/security-policy",
+  title: "Security Policy",
+  description:
+    "Security policy and responsible disclosure information for vegasvalleyhomesforsale.com",
+});
 
 export default function SecurityPolicyPage() {
   return (
@@ -53,8 +51,8 @@ export default function SecurityPolicyPage() {
                 </li>
                 <li>
                   <strong>Phone:</strong>{' '}
-                  <a href="tel:+17025001942" className="underline">
-                    (702) 500-1942
+                  <a href="tel:+17022221964" className="underline">
+                    (702) 222-1964
                   </a>
                 </li>
                 <li>
@@ -252,8 +250,8 @@ export default function SecurityPolicyPage() {
               </p>
               <p>
                 Phone:{' '}
-                <a href="tel:+17025001942" className="text-blue-600 underline">
-                  (702) 500-1942
+                <a href="tel:+17022221964" className="text-blue-600 underline">
+                  (702) 222-1964
                 </a>
               </p>
             </div>

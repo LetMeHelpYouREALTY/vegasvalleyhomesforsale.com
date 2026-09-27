@@ -258,9 +258,9 @@ export class FollowUpBossClient {
       'Authorization': `Basic ${Buffer.from(`${this.config.apiKey}:`).toString('base64')}`,
     };
 
-    // Add system key for higher rate limits
+    headers["X-System"] = "DrJanDuffyWebsite";
     if (this.config.systemKey) {
-      headers['X-System-Key'] = this.config.systemKey;
+      headers["X-System-Key"] = this.config.systemKey;
     }
 
     let lastError: Error | null = null;

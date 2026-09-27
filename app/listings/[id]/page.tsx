@@ -3,12 +3,21 @@ import Footer from "@/components/layouts/Footer";
 import Image from "next/image";
 import { Bed, Bath, Square, MapPin, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Property Details | Las Vegas & Henderson Real Estate",
-  description: "View detailed information about this property listing in Las Vegas or Henderson, NV.",
+type PropertyPageProps = {
+  params: Promise<{ id: string }>;
 };
+
+export async function generateMetadata({ params }: PropertyPageProps) {
+  const { id } = await params;
+  return buildPageMetadata({
+    path: `/listings/${id}`,
+    title: `Property ${id} | Las Vegas & Henderson Real Estate`,
+    description:
+      "View detailed information about this property listing in Las Vegas or Henderson, NV.",
+  });
+}
 
 // This would typically fetch from RealScout API
 async function getProperty(id: string) {
@@ -27,10 +36,6 @@ async function getProperty(id: string) {
       "Stunning modern home in desirable Summerlin community. Features open floor plan, updated kitchen, and beautiful backyard. Close to schools, shopping, and entertainment.",
   };
 }
-
-type PropertyPageProps = {
-  params: Promise<{ id: string }>;
-};
 
 export default async function PropertyPage({ params }: PropertyPageProps) {
   const { id } = await params;
@@ -136,7 +141,7 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
                 </p>
                 <div className="space-y-3">
                   <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
-                    <a href="tel:+17025001942">Call (702) 500-1942</a>
+                    <a href="tel:+17022221964">Call (702) 222-1964</a>
                   </Button>
                   <Button asChild variant="outline" className="w-full">
                     <a href="/contact">Send Message</a>

@@ -16,6 +16,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { FollowUpBossClient } from '@/lib/fub/client';
+import { createFollowUpBossClient, getFollowUpBossApiKey, getFollowUpBossSystemKey } from '@/lib/fub/env';
 import { ClaudeClient } from '@/lib/claude/client';
 import { propertySearchTemplate } from '@/lib/claude/prompt-templates';
 
@@ -75,7 +76,8 @@ async function handlePersonCreated(data: any) {
   console.log(`[FUB] New person created: ${data.name || data.id}`);
 
   const fub = new FollowUpBossClient({
-    apiKey: process.env.FUB_API_KEY || '',
+    apiKey: getFollowUpBossApiKey(),
+    systemKey: getFollowUpBossSystemKey(),
   });
 
   try {
@@ -138,7 +140,8 @@ async function handleStageUpdated(data: any) {
   console.log(`[FUB] Stage updated for ${data.name || data.id}: ${data.stage}`);
 
   const fub = new FollowUpBossClient({
-    apiKey: process.env.FUB_API_KEY || '',
+    apiKey: getFollowUpBossApiKey(),
+    systemKey: getFollowUpBossSystemKey(),
   });
 
   try {
@@ -185,7 +188,8 @@ async function handleTagsCreated(data: any) {
   console.log(`[FUB] Tags added to ${data.name || data.id}: ${data.tags?.join(', ')}`);
 
   const fub = new FollowUpBossClient({
-    apiKey: process.env.FUB_API_KEY || '',
+    apiKey: getFollowUpBossApiKey(),
+    systemKey: getFollowUpBossSystemKey(),
   });
 
   // Trigger actions based on specific tags
@@ -281,7 +285,8 @@ Based on this information, provide a brief lead qualification summary and recomm
  */
 async function checkForDuplicates(personId: number) {
   const fub = new FollowUpBossClient({
-    apiKey: process.env.FUB_API_KEY || '',
+    apiKey: getFollowUpBossApiKey(),
+    systemKey: getFollowUpBossSystemKey(),
   });
 
   try {
@@ -330,7 +335,8 @@ async function checkForDuplicates(personId: number) {
  */
 async function triggerPropertySearch(personId: number, neighborhood?: string) {
   const fub = new FollowUpBossClient({
-    apiKey: process.env.FUB_API_KEY || '',
+    apiKey: getFollowUpBossApiKey(),
+    systemKey: getFollowUpBossSystemKey(),
   });
 
   try {

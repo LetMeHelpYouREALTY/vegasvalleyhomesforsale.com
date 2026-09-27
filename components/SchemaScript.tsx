@@ -8,6 +8,7 @@
  */
 
 import { combineSchemas, schemaToJsonLd } from "@/lib/schema";
+import { getSiteUrl } from "@/lib/site-url";
 
 interface SchemaScriptProps {
   /** Single schema object */
@@ -102,7 +103,6 @@ export function FAQSchema({
  */
 export function ReviewSchema({
   reviews,
-  aggregateRating,
 }: {
   reviews?: Array<{
     author: string;
@@ -110,27 +110,13 @@ export function ReviewSchema({
     text: string;
     date?: string;
   }>;
-  aggregateRating?: {
-    ratingValue: number;
-    reviewCount: number;
-  };
 }) {
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    "@id": "https://heyberkshire.com#organization",
+    "@id": `${getSiteUrl()}#organization`,
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
   };
-
-  if (aggregateRating) {
-    schema.aggregateRating = {
-      "@type": "AggregateRating",
-      ratingValue: aggregateRating.ratingValue.toString(),
-      reviewCount: aggregateRating.reviewCount.toString(),
-      bestRating: "5",
-      worstRating: "1",
-    };
-  }
 
   if (reviews && reviews.length > 0) {
     schema.review = reviews.map((review) => ({

@@ -3,20 +3,21 @@ import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
 import { Phone, TreePine, ShoppingBag, GraduationCap, MapPin } from "lucide-react";
-import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Berkshire Hathaway HomeServices Green Valley | Henderson Real Estate",
+export const metadata = buildPageMetadata({
+  path: "/neighborhoods/green-valley",
+  title: "Green Valley | Henderson Real Estate",
   description:
-    "Find Green Valley homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy specializes in Henderson's most established community. Median price $520K. Call (702) 500-1942.",
+    "Find Green Valley homes with Berkshire Hathaway HomeServices Nevada Properties. Dr. Jan Duffy specializes in Henderson's most established community. Median price $520K. Call (702) 222-1964.",
   keywords: [
-    "Berkshire Hathaway HomeServices Green Valley",
+    "Green Valley Homes for Sale",
     "Green Valley homes for sale",
     "Green Valley Henderson",
     "Green Valley real estate",
     "Green Valley Ranch",
   ],
-};
+});
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -84,7 +85,7 @@ export default function GreenValleyPage() {
               Berkshire Hathaway HomeServices Nevada Properties
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-              Berkshire Hathaway HomeServices Green Valley
+              Green Valley Homes for Sale
             </h1>
             <p className="text-xl text-slate-600">
               Henderson's original master-planned community. Find your Green Valley home with{" "}
@@ -348,15 +349,15 @@ export default function GreenValleyPage() {
               Discover Green Valley Living
             </h2>
             <p className="text-xl text-blue-100 mb-8">
-              Contact Dr. Jan Duffy, your Berkshire Hathaway HomeServices Green Valley specialist,
+              Contact Dr. Jan Duffy, your Green Valley Homes for Sale specialist,
               for expert guidance in Henderson's most established community.
             </p>
             <a
-              href="tel:+17025001942"
+              href="tel:+17022221964"
               className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Call (702) 500-1942
+              Call (702) 222-1964
             </a>
             <p className="mt-4 text-blue-200 text-sm">
               Berkshire Hathaway HomeServices Nevada Properties

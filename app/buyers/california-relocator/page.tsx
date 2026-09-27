@@ -16,12 +16,13 @@ import {
   CheckCircle,
   TrendingUp,
 } from "lucide-react";
-import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Relocating from California to Las Vegas | Berkshire Hathaway HomeServices",
+export const metadata = buildPageMetadata({
+  path: "/buyers/california-relocator",
+  title: "Relocating from California to Las Vegas",
   description:
-    "Moving from California to Las Vegas? Zero state income tax, 40-60% lower home prices, same sunshine. Dr. Jan Duffy helps CA relocators find their perfect Las Vegas home. Call (702) 500-1942.",
+    "Moving from California to Las Vegas? Zero state income tax, 40-60% lower home prices, same sunshine. Dr. Jan Duffy helps CA relocators find their perfect Las Vegas home. Call (702) 222-1964.",
   keywords: [
     "California to Las Vegas relocation",
     "moving from California to Nevada",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     "Las Vegas homes California buyers",
     "Berkshire Hathaway HomeServices relocation",
   ],
-};
+});
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -83,7 +84,7 @@ const realEstateAgentSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
   name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-  telephone: "+17025001942",
+  telephone: "+17022221964",
   url: "https://heyberkshire.com/buyers/california-relocator",
   address: {
     "@type": "PostalAddress",
@@ -135,11 +136,11 @@ export default function CaliforniaRelocatorPage() {
               Zero state income tax. 40-60% lower home prices. Same sunshine.
             </p>
             <a
-              href="tel:+17025001942"
+              href="tel:+17022221964"
               className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-700 transition-colors"
             >
               <Phone className="h-5 w-5 mr-2" />
-              Start Your Tax-Free Life → (702) 500-1942
+              Start Your Tax-Free Life → (702) 222-1964
             </a>
           </div>
 
@@ -470,11 +471,11 @@ export default function CaliforniaRelocatorPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call/Text (702) 500-1942
+                Call/Text (702) 222-1964
               </a>
               <Link
                 href="/contact"

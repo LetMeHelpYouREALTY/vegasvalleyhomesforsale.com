@@ -9,7 +9,19 @@ import { Phone, Home as HomeIcon, TrendingUp, Shield, Users } from "lucide-react
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { getFaqsForDomain } from "@/lib/faq-config";
 import { SISTER_SITES } from "@/lib/domain-config";
-import { getSiteUrl } from "@/lib/site-url";
+import { getSiteUrl, SITE_TITLE } from "@/lib/site-url";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { getPageDomainConfig as getDomainConfigForMeta } from "@/lib/get-domain-config";
+
+export async function generateMetadata() {
+  const config = await getDomainConfigForMeta();
+  return buildPageMetadata({
+    path: "/",
+    title: SITE_TITLE,
+    description: config.description,
+    keywords: config.keywords,
+  });
+}
 
 // Maps pageType → human-readable FAQ section title/subtitle
 const FAQ_SECTION_COPY: Record<

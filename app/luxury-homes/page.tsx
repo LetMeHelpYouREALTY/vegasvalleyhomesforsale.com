@@ -17,12 +17,13 @@ import {
   Camera,
   Users,
 } from "lucide-react";
-import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Las Vegas Luxury Homes for Sale | Berkshire Hathaway HomeServices",
+export const metadata = buildPageMetadata({
+  path: "/luxury-homes",
+  title: "Las Vegas Luxury Homes for Sale",
   description:
-    "Discover Las Vegas luxury real estate with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. The Ridges, MacDonald Highlands, Summerlin, Southern Highlands. $1M+ homes. Call (702) 500-1942.",
+    "Discover Las Vegas luxury real estate with Dr. Jan Duffy at Berkshire Hathaway HomeServices Nevada Properties. The Ridges, MacDonald Highlands, Summerlin, Southern Highlands. $1M+ homes. Call (702) 222-1964.",
   keywords: [
     "Las Vegas luxury homes",
     "The Ridges Las Vegas",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     "MacDonald Highlands Henderson",
     "luxury real estate agent Las Vegas",
   ],
-};
+});
 
 const luxurySchema = {
   "@context": "https://schema.org",
@@ -42,7 +43,7 @@ const luxurySchema = {
   provider: {
     "@type": "RealEstateAgent",
     name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    telephone: "+17025001942",
+    telephone: "+17022221964",
   },
   areaServed: "Las Vegas, Henderson, Summerlin luxury communities",
   serviceType: "Luxury Real Estate",
@@ -428,11 +429,11 @@ export default function LuxuryHomesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (702) 222-1964
               </a>
               <Link
                 href="/contact"

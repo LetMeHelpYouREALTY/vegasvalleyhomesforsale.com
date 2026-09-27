@@ -17,7 +17,7 @@ import {
   Building,
   Heart,
 } from "lucide-react";
-import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import {
   businessInfo,
   gbpDescription,
@@ -26,10 +26,11 @@ import {
   generateFAQSchema,
 } from "@/lib/gbp-schema";
 
-export const metadata: Metadata = {
-  title: "Dr. Jan Duffy, REALTOR® Las Vegas | Berkshire Hathaway HomeServices",
+export const metadata = buildPageMetadata({
+  path: "/google-business",
+  title: "Dr. Jan Duffy, REALTOR® Las Vegas",
   description:
-    "Dr. Jan Duffy is a trusted Las Vegas REALTOR® with Berkshire Hathaway HomeServices Nevada Properties. Specializing in Summerlin, Henderson, 55+ communities, California relocation, and luxury homes. Call (702) 500-1942.",
+    "Dr. Jan Duffy is a trusted Las Vegas REALTOR® with Berkshire Hathaway HomeServices Nevada Properties. Specializing in Summerlin, Henderson, 55+ communities, California relocation, and luxury homes. Call (702) 222-1964.",
   keywords: [
     "Dr. Jan Duffy realtor",
     "Las Vegas real estate agent",
@@ -39,13 +40,7 @@ export const metadata: Metadata = {
     "55+ communities Las Vegas",
     "California relocation Las Vegas",
   ],
-  openGraph: {
-    title: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
-    description: "Trusted Las Vegas REALTOR® serving since 2008. Summerlin, Henderson, luxury homes, 55+ communities.",
-    url: "https://heyberkshire.com/google-business",
-    type: "profile",
-  },
-};
+});
 
 export default function GoogleBusinessPage() {
   const localBusinessSchema = generateLocalBusinessSchema();
@@ -103,15 +98,11 @@ export default function GoogleBusinessPage() {
                   </div>
                 </div>
                 
-                {/* Rating & CTA */}
+                {/* CTA */}
                 <div className="text-center bg-white/10 rounded-xl p-8">
-                  <div className="flex justify-center mb-4">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="h-8 w-8 text-yellow-400 fill-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-3xl font-bold mb-2">4.9 / 5.0</p>
-                  <p className="text-blue-200 mb-6">200+ Client Reviews</p>
+                  <p className="text-lg text-blue-100 mb-6">
+                    Schedule a free consultation for buying, selling, or relocating in the Las Vegas Valley.
+                  </p>
                   <a
                     href={`tel:${businessInfo.phone.tel}`}
                     className="inline-block w-full bg-blue-600 hover:bg-blue-500 text-white px-6 py-4 rounded-lg font-bold text-lg transition-colors"

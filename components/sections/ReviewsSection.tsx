@@ -147,7 +147,7 @@ export default function ReviewsSection({
 
 /**
  * Helper to convert reviews to schema format for ReviewSchema component
- * Use with: <ReviewSchema reviews={getReviewSchemaData(reviews)} aggregateRating={aggregateRating} />
+ * Use with: <ReviewSchema reviews={getReviewSchemaData(reviews)} />
  */
 export function getReviewSchemaData(reviews: Review[]) {
   return reviews.map((review) => ({

@@ -14,12 +14,13 @@ import {
   Mountain,
   Star,
 } from "lucide-react";
-import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
+  path: "/55-plus-communities/heritage-stonebridge",
   title: "Heritage at Stonebridge Homes for Sale | Guard-Gated 55+ Summerlin | Dr. Jan Duffy",
   description:
-    "Heritage at Stonebridge - boutique guard-gated 55+ community in Summerlin. Homes from $400K-$750K. Near Downtown Summerlin, Red Rock Canyon. Dr. Jan Duffy, BHHS. Call (702) 500-1942.",
+    "Heritage at Stonebridge - boutique guard-gated 55+ community in Summerlin. Homes from $400K-$750K. Near Downtown Summerlin, Red Rock Canyon. Dr. Jan Duffy, BHHS. Call (702) 222-1964.",
   keywords: [
     "Heritage at Stonebridge homes for sale",
     "Heritage Stonebridge Summerlin",
@@ -28,13 +29,7 @@ export const metadata: Metadata = {
     "boutique 55+ community Las Vegas",
     "Berkshire Hathaway Heritage Stonebridge",
   ],
-  openGraph: {
-    title: "Heritage at Stonebridge - Guard-Gated 55+ Living in Summerlin",
-    description:
-      "Boutique community with premium Summerlin location. Guard-gated security, near Downtown Summerlin. From $400K. Dr. Jan Duffy, BHHS.",
-    type: "website",
-  },
-};
+});
 
 const communitySchema = {
   "@context": "https://schema.org",
@@ -397,11 +392,11 @@ export default function HeritageAtStonebridgePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <a
-                href="tel:+17025001942"
+                href="tel:+17022221964"
                 className="inline-flex items-center justify-center bg-white text-purple-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-purple-50 transition-colors"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Call (702) 500-1942
+                Call (702) 222-1964
               </a>
               <Link
                 href="/contact"

@@ -275,24 +275,6 @@ export function generateFAQSchema(faqs: FAQItem[]) {
 }
 
 /**
- * Generate AggregateRating schema
- */
-export function generateAggregateRatingSchema(
-  ratingValue: number,
-  reviewCount: number,
-  bestRating = 5,
-  worstRating = 1
-) {
-  return {
-    "@type": "AggregateRating",
-    ratingValue: ratingValue.toString(),
-    reviewCount: reviewCount.toString(),
-    bestRating: bestRating.toString(),
-    worstRating: worstRating.toString(),
-  };
-}
-
-/**
  * Generate Review schema for individual testimonials
  */
 export function generateReviewSchema(reviews: ReviewItem[]) {
