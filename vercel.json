@@ -72,6 +72,17 @@
       "source": "/home",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.vegasvalleyhomesforsale.com"
+        }
+      ],
+      "destination": "https://vegasvalleyhomesforsale.com/:path*",
+      "permanent": true
     }
   ]
 }
