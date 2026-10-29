@@ -158,8 +158,8 @@ export default async function Home() {
         </section>
 
         <FeaturedListing
-          phone="(702) 842-2276"
-          phoneHref="tel:+17028422276"
+          phone="(702) 500-1955"
+          phoneHref="tel:+17025001955"
           siteHost="vegasvalleyhomesforsale.com"
         />
 
