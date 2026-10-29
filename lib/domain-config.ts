@@ -43,7 +43,7 @@ export const SITE_DOMAIN_CONFIG: DomainConfig = {
   ctaBadge: "Boulder City & Mountain Markets",
   ctaHeadline: "Search Boulder City, Blue Diamond & Kyle Canyon Listings",
   ctaSubheadline:
-    "Call or text (702) 222-1964 — MLS access and showings for homes outside the Las Vegas core.",
+    "Call or text (702) 500-1955 — MLS access and showings for homes outside the Las Vegas core.",
 };
 
 export const SISTER_SITES = [
