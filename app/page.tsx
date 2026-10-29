@@ -5,6 +5,7 @@ import ReviewsSection from "@/components/sections/ReviewsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
+import FeaturedListing from "@/components/sections/FeaturedListing";
 import { Phone, Home as HomeIcon, TrendingUp, Shield, Users } from "lucide-react";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { getFaqsForDomain } from "@/lib/faq-config";
@@ -155,6 +156,12 @@ export default async function Home() {
             </div>
           </div>
         </section>
+
+        <FeaturedListing
+          phone="(702) 842-2276"
+          phoneHref="tel:+17028422276"
+          siteHost="vegasvalleyhomesforsale.com"
+        />
 
         {/* Value Proposition */}
         <section className="py-16 md:py-20 bg-white">
