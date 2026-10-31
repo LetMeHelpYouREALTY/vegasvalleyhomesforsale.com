@@ -4,6 +4,7 @@ import "./globals.css";
 import { getSiteUrl } from "@/lib/site-url";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
+import { SpeedInsights as VercelSpeedInsights } from "@vercel/speed-insights/next";
 
 /** Site-wide defaults only — no canonical (each page sets its own). */
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <Analytics />
+        <VercelSpeedInsights />
       </body>
     </html>
   );
